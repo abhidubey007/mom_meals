@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { Header, Meals, Cart } from './components'
+import CartProvider from './store/CartProvider';
 
 
 const App = () => {
@@ -15,13 +16,13 @@ const App = () => {
     }
 
     return (
-        <>
-            {cartIsShown && <Cart onClose={hideCartHandler}/>}
+        <CartProvider>
+            {cartIsShown && <Cart onClose={hideCartHandler} />}
             <Header onShowCart={showCartHandler} />
             <main>
                 <Meals />
             </main>
-        </>
+        </CartProvider>
     )
 }
 
